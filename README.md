@@ -9,7 +9,7 @@ In this project, I am exploring all these operations which we can optimize. Some
 + strlen
 + strcmp
 + strcpy*
-+ strcat*
++ strcat
 + strstr*
 + strreverse*
 

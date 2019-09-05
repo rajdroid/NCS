@@ -23,6 +23,41 @@ START_TEST(ncs_length_test2)
 }
 END_TEST
 
+/*
+ * Purpose: To test NCS string concat
+ */
+START_TEST(ncs_length_test3)
+{
+    char *str = ncs_new ("hello");
+    char *cstr = ncs_cat(str, "dd");
+    ck_assert_str_eq(cstr, "hellodd");
+}
+END_TEST
+
+/*
+ * Purpose: To test NCS string concat
+ *          when NCS string is null
+ */
+START_TEST(ncs_length_test4)
+{
+    char *str = ncs_new ("");
+    char *cstr = ncs_cat(str, "dd");
+    ck_assert_str_eq(cstr, "dd");
+}
+END_TEST
+
+/*
+ * Purpose: To test NCS string concat
+ *          when NCS string and C string
+ *          both are null
+ */
+START_TEST(ncs_length_test5)
+{
+    char *str = ncs_new ("");
+    char *cstr = ncs_cat(str, "");
+    ck_assert_str_eq(cstr, "");
+}
+END_TEST
 
 Suite *ncs_suite (void)
 {
@@ -31,6 +66,9 @@ Suite *ncs_suite (void)
 
     tcase_add_test(tc_core, ncs_length_test1);
     tcase_add_test(tc_core, ncs_length_test2);
+    tcase_add_test(tc_core, ncs_length_test3);
+    tcase_add_test(tc_core, ncs_length_test4);
+    tcase_add_test(tc_core, ncs_length_test5);
     suite_add_tcase(s, tc_core);
 
     return s;
